@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+
+<ui:composition
+	template="/html/template.xhtml">
+	<ui:define name="title">
+		<h:outputText value="#{msg.tituloPagina}" />
+	</ui:define>
+	<ui:define name="contenido">
+		<h:dataTable value="#{cuentaBean.listaCuenta}" var="lista" class="table">
+		 <h:column>
+		 <f:facet name="header">ID Cuenta</f:facet>
+		 	#{lista.idCuenta}
+		 </h:column>
+		 		 <h:column>
+		 <f:facet name="header">Saldo cuenta</f:facet>
+		 	#{lista.saldo}
+		 </h:column>
+		 <h:column>
+		 <f:facet name="header">DNI</f:facet>
+		 	#{lista.cliente.cedula}
+		 </h:column>
+		 <h:column>
+		 	<f:facet name="header">Nombre</f:facet>
+		 	#{lista.cliente.nombre}
+		</h:column>
+		<h:column>
+		   <f:facet name="header">Numero celular</f:facet>
+			#{lista.cliente.numeroCelular}
+		</h:column>
+		<h:column>
+			  <f:facet name="header">Saldo celular</f:facet>
+			#{lista.cliente.saldo}
+		</h:column>
+		<!--	<h:column>
+				<h:commandButton
+					action="#{cuentaBean.redirigeSolicitudRecarga(cuentaBean.newCliente.cedula)}"
+					value="Poliza" class="btn btn-info btn-xs" />
+			</h:column> -->
+		</h:dataTable>
+			
+
+	</ui:define>
+
+</ui:composition>
+
+</html>
